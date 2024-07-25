@@ -1,33 +1,48 @@
-# springsecurity6.0
-- [English](#english)
-- [中文](#中文)
+<div align=center>
+ <h2>
+   SpringSecurity官网最新学习文档
+  </h2>
+</div>
 
----
+<div align=center>
+<img src="https://img.shields.io/badge/jdk-17-blue"/>
+<img src="https://img.shields.io/badge/spring_boot-3.3-lightBlue"/>
+<img src="https://img.shields.io/badge/spring_security-6.0-red"/>
+<img src="https://img.shields.io/badge/myba tis-3.0.2-purple"/>
+<img src="https://img.shields.io/badge/jwt-0.12.3-brightgreen"/>
+<img src="https://img.shields.io/badge/mysql-8.0-green"/>
+<img src="https://img.shields.io/badge/redis-3.0.3-orange"/>
+</div>
 
-### English
+[English](https://github.com/RealLiuSha/echo-admin/blob/main/README.en.md) | 简体中文
 
-1. Custom form authentication (✔️)
-2. Customize authentication methods, including multiple authentication methods (currently two database authentication and SMS verification code) (✔️)
-3. Add verification code verification (✔️)
-4. Custom c s r f token authentication (✔️)
-5. Add j w t token authentication (✔️)
-6. Customize Security Context storage location (✔️)
-7. Custom session management (✔️)
-8. Remember the password (✔️)
-9. Interface return values are processed uniformly (✔️)
-10. Customized RBAC authority authentication (to be implemented) (❌)
+## 特性
+* 重写认证功能，支持多种认证方式（例如：数据库、短信）（✔️）
+* 实现基于前后端分离架构的认证功能，允许通过表单配置进行自定义（✔️）
+* SecurityContext认证信息的存储位置自定义配置（✔️）
+* 实现自定义会话管理，包括会话过期和失效处理（✔️）
+* 支持基于CSRF令牌的认证，CSRF令牌存储位置自定义（✔️）
+* 支持基于JWT令牌的认证方式（✔️）
+* 实现记住密码功能，令牌存储方式自定义（✔️）
+* 统一接口返回信息，确保符合标准化的格式（✔️）
+* 搭配博客阅读每一步实现（源码阅读）（✔️）
 
----
+* 支持基于OAuth2的认证流程（待实现）❌
+* 实现自定义授权功能，包括基于RBAC的权限认证（待实现）❌
 
-### 中文
+## 简介
 
-1. 自定义表单认证（✔️）
-2. 自定义认证方法，包括多种认证方式（目前两种数据库认证和短信验证码）（✔️）
-3. 添加验证码校验（✔️）
-4. 自定义c s r f令牌认证（✔️）
-5. 添加j w t令牌认证（✔️）
-6. 自定义Security Context存储位置（✔️）
-7. 自定义会话管理（✔️）
-8. 记住密码（✔️）
-9. 接口返回值统一处理（✔️）
-10. 自定义RBAC权限认证（待实现）（❌）
+根据官网学习SpringSecurity最新实现（前后端分离），包括认证，授权，及各种组件自定义配置等（搭配博客文章阅读）
+
+## 博客
+
+```html
+<div>
+ <a href="www.techkid.top" title="博客">博客地址</a> 
+</div>
+```
+
+## 使用说明
+
+欢迎 PR 和 Issue，理想情况下，我都会尽快处理和回复，感谢你关注
+
