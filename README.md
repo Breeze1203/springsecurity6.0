@@ -13,7 +13,9 @@
 <img src="https://img.shields.io/badge/mysql-8.0-green"/>
 <img src="https://img.shields.io/badge/redis-3.0.3-orange"/>
 </div>
-[English](https://github.com/Breeze1203/springsecurity6.0/blob/main/README.en.md) |简体中文
+```markdown
+[English](https://github.com/Breeze1203/springsecurity6.0/blob/main/README.md)|中文
+```
 
 ## 特性
 * 重写认证功能，支持多种认证方式（例如：数据库、短信）（✔️）
