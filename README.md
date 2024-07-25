@@ -13,8 +13,7 @@
 <img src="https://img.shields.io/badge/mysql-8.0-green"/>
 <img src="https://img.shields.io/badge/redis-3.0.3-orange"/>
 </div>
-
-[English](https://github.com/RealLiuSha/echo-admin/blob/main/README.en.md) | 简体中文
+[English](https://github.com/Breeze1203/springsecurity6.0/blob/main/README.en.md) |[简体中文](https://github.com/Breeze1203/springsecurity6.0/blob/main/README.md)
 
 ## 特性
 * 重写认证功能，支持多种认证方式（例如：数据库、短信）（✔️）
@@ -36,11 +35,7 @@
 
 ## 博客
 
-```html
-<div>
- <a href="www.techkid.top" title="博客">博客地址</a> 
-</div>
-```
+[入口](http://www.techkid.top/)
 
 ## 使用说明
 
