@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.eachadmin.mapper.TokenMapper">
+    <resultMap id="BaseResult" type="org.springframework.security.web.authentication.rememberme.PersistentRememberMeToken">
+        <result column="username" property="username" jdbcType="VARCHAR"/>
+        <result column="series" property="series" jdbcType="VARCHAR"/>
+        <result column="tokenValue" property="tokenValue" jdbcType="VARCHAR"/>
+        <result column="date" property="date" javaType="java.util.Date"/>
+    </resultMap>
+    <insert id="createToken" parameterType="org.springframework.security.web.authentication.rememberme.PersistentRememberMeToken">
+        insert into persistent_logins(username, series, token, last_used)
+        values (#{username}, #{series}, #{tokenValue}, #{date})
+    </insert>
+    <select id="getTokenBySeries" resultType="org.springframework.security.web.authentication.rememberme.PersistentRememberMeToken">
+        select * from persistent_logins where series=#{series}
+    </select>
+    <update id="updateUserToken">
+        update persistent_logins
+        set token=#{tokenValue},
+            last_used=#{lastUsed}
+        where series = #{series}
+    </update>
+    <delete id="removeUserToken" parameterType="java.lang.String">
+        delete from persistent_logins
+        where username = #{username}
+    </delete>
+</mapper>
