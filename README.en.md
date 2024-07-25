@@ -9,13 +9,11 @@
 <img src="https://img.shields.io/badge/jdk-17-blue"/>
 <img src="https://img.shields.io/badge/spring_boot-3.3-lightBlue"/>
 <img src="https://img.shields.io/badge/spring_security-6.0-red"/>
-<img src="https://img.shields.io/badge/myba tis-3.0.2-purple"/>
+<img src="https://img.shields.io/badge/mybatis-3.0.2-purple"/>
 <img src="https://img.shields.io/badge/jwt-0.12.3-brightgreen"/>
 <img src="https://img.shields.io/badge/mysql-8.0-green"/>
 <img src="https://img.shields.io/badge/redis-3.0.3-orange"/>
 </div>
-
-English |[简体中文](https://github.com/Breeze1203/springsecurity6.0/blob/main/README.md)
 
 ## Features
 
