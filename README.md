@@ -12,6 +12,7 @@
 <img src="https://img.shields.io/badge/mysql-8.0-green"/>
 <img src="https://img.shields.io/badge/redis-3.0.3-orange"/>
 </div>
+[English](https://github.com/Breeze1203/springsecurity6.0/blob/main/README.en.md)|简体中文
 
 ## 特性
 
