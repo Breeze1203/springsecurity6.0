@@ -53,7 +53,7 @@ public class ServiceController {
         return "test01";
     }
 
-    @GetMapping("/test02")
+    @PostMapping("/test02")
     public String test02() {
         return "test02";
     }

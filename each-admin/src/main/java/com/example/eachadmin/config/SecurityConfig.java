@@ -1,12 +1,9 @@
 package com.example.eachadmin.config;
 
 
-import com.example.eachadmin.config.Authentication.CustomizeAuthenticationFailureHandler;
-import com.example.eachadmin.config.Authentication.CustomizeAuthenticationSuccessHandler;
 import com.example.eachadmin.config.Authentication.CustomizeAuthorizeHttpRequestsConfig;
 import com.example.eachadmin.config.Authentication.provider.SmsAuthenticationProvider;
 import com.example.eachadmin.config.Authentication.provider.UsernamePasswordAuthenticationProvider;
-import com.example.eachadmin.config.Authorization.CustomizeAuthorizationManager;
 import com.example.eachadmin.config.context.CustomizeContextConfig;
 import com.example.eachadmin.config.cors.CustomizeCorsConfig;
 import com.example.eachadmin.config.csrf.CustomizeCsrfConfig;
@@ -23,9 +20,9 @@ import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationEventPublisher;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.DefaultAuthenticationEventPublisher;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -60,7 +57,6 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        // 所有请求都得认证
         http.authorizeHttpRequests(new CustomizeAuthorizeHttpRequestsConfig());
         http.authenticationProvider(daoAuthenticationProvider());
         // 配置表单
@@ -77,10 +73,8 @@ public class SecurityConfig {
         // 配置登出
         http.logout(new CustomizeLogoutConfig());
         http.addFilterBefore(imageCodeValidateFilter, UsernamePasswordAuthenticationFilter.class);
-        http.addFilterBefore(new CsrfCookieFilter(), UsernamePasswordAuthenticationFilter.class);
-        http.addFilterBefore(new JwtTokenValidatorFilter(), BasicAuthenticationFilter.class);
-        http.addFilterAt(new AuthoritiesLoggingAtFilter(), BasicAuthenticationFilter.class);
-        http.addFilterAfter(new AuthoritiesLoggingAfterFilter(), BasicAuthenticationFilter.class);
+        http.addFilterBefore(new CsrfCookieFilter(), BasicAuthenticationFilter.class);
+        http.addFilterBefore(new JwtTokenValidatorFilter(),BasicAuthenticationFilter.class);
         return http.build();
     }
 
@@ -119,12 +113,6 @@ public class SecurityConfig {
         return new SmsAuthenticationProvider();
     }
 
-    //定义 CustomizeAuthorizationManager Bean
-    @Bean
-    public CustomizeAuthorizationManager customizeAuthorizationManager() {
-        return new CustomizeAuthorizationManager();
-    }
-
     @Bean
     public DefaultKaptcha captchaProducer() {
         DefaultKaptcha defaultKaptcha = new DefaultKaptcha();
@@ -149,12 +137,6 @@ public class SecurityConfig {
         Config config = new Config(properties);
         defaultKaptcha.setConfig(config);
         return defaultKaptcha;
-    }
-
-    @Bean
-    public AuthenticationEventPublisher authenticationEventPublisher
-            (ApplicationEventPublisher applicationEventPublisher) {
-        return new DefaultAuthenticationEventPublisher(applicationEventPublisher);
     }
 
 }

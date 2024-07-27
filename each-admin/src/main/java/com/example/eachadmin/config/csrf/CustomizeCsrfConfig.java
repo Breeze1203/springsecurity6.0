@@ -5,13 +5,14 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.CsrfConfigurer;
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 import org.springframework.security.web.csrf.CsrfTokenRequestAttributeHandler;
-import static com.example.eachadmin.constants.SecurityConstants.EXCLUDED_PATHS;
 
 /**
  * 自定义CSRF配置的方法。
  * 用于配置CSRF保护的构建器。
  */
+
 public class CustomizeCsrfConfig implements Customizer<CsrfConfigurer<HttpSecurity>> {
+
     @Override
     public void customize(CsrfConfigurer<HttpSecurity> httpSecurityCsrfConfigurer) {
         // 忽略对"/login"路径的CSRF保护，即不对这些请求进行CSRF令牌的验证。

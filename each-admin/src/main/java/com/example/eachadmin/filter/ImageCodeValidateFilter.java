@@ -37,7 +37,7 @@ public class ImageCodeValidateFilter extends OncePerRequestFilter {
                 validate(request);
             } catch (ValidateCodeException e) {
                 // 手动捕获图形验证码校验过程抛出的异常，将其传给失败处理器进行处理
-                CustomizeAuthenticationFailureHandler.getInstance().onAuthenticationFailure(request, response,e);
+                CustomizeAuthenticationFailureHandler.getInstance().onAuthenticationFailure(request, response, new BadCredentialsException(e.getMessage()));
                 return;
             }
         }

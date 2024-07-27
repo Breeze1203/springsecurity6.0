@@ -28,7 +28,8 @@ public class JwtTokenValidatorFilter extends OncePerRequestFilter {
         if (!EXCLUDED_PATHS.contains(request.getRequestURI())) {
             String jwt = request.getHeader(SecurityConstants.JWT_HEADER);
             if (!StringUtils.hasText(jwt)) {
-                CustomizeAuthenticationFailureHandler.getInstance().onAuthenticationFailure(request, response, new BadCredentialsException("暂无权限访问"));
+                CustomizeAuthenticationFailureHandler.getInstance().onAuthenticationFailure(request, response, new BadCredentialsException("令牌不存在"));
+                return;
             }
             try {
                 SecretKey key = Keys.hmacShaKeyFor(
@@ -42,6 +43,7 @@ public class JwtTokenValidatorFilter extends OncePerRequestFilter {
                 // 清除安全上下文的认证信息并抛出异常
                 SecurityContextHolder.clearContext();
                 CustomizeAuthenticationFailureHandler.getInstance().onAuthenticationFailure(request, response, new BadCredentialsException(e.getMessage()));
+                return;
             }
         }
         // 继续过滤链

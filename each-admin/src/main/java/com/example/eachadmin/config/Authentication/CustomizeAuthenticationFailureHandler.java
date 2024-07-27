@@ -17,6 +17,14 @@ import java.io.Serializable;
 public class CustomizeAuthenticationFailureHandler implements AuthenticationFailureHandler {
 
     private static CustomizeAuthenticationFailureHandler instance;
+
+    public static CustomizeAuthenticationFailureHandler getInstance() {
+        if (instance == null) {
+            instance = new CustomizeAuthenticationFailureHandler();
+        }
+        return instance;
+    }
+
     @Override
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
         // 设置响应的内容类型和字符编码
@@ -29,13 +37,6 @@ public class CustomizeAuthenticationFailureHandler implements AuthenticationFail
         PrintWriter out = response.getWriter();
         out.print(jsonResponse);
         out.flush();
-    }
-
-    public static CustomizeAuthenticationFailureHandler getInstance() {
-        if (instance == null) {
-            instance = new CustomizeAuthenticationFailureHandler();
-        }
-        return instance;
     }
 
 }

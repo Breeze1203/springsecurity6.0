@@ -12,6 +12,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
+import java.util.List;
 
 @Service
 public class UsernamePasswordAuthenticationProvider implements AuthenticationProvider {
@@ -28,7 +29,7 @@ public class UsernamePasswordAuthenticationProvider implements AuthenticationPro
         User user = userMapper.findUserByName(username);
         if (user != null) {
             if (bCryptPasswordEncoder.matches(pwd, user.getPwd())) {
-                return new UsernamePasswordAuthenticationToken(username, pwd, Collections.emptyList());
+                return new UsernamePasswordAuthenticationToken(username, pwd,Collections.emptyList());
             } else {
                 throw new BadCredentialsException("密码错误!");
             }

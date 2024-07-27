@@ -2,6 +2,7 @@ package com.example.eachadmin.config.context;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -25,35 +26,45 @@ public class CustomizeSecurityContextRepository implements SecurityContextReposi
     @Autowired
     private RedisTemplate<String, Object> redisTemplate;
 
+
+
     @Override
     public SecurityContext loadContext(HttpRequestResponseHolder requestResponseHolder) {
-        // 获取sessionId
-        String sessionId = requestResponseHolder.getRequest().getSession().getId();
-        // 看redis里面有没有会话信息
-        String context = (String) redisTemplate.opsForValue().get(SECURITY_CONTEXT_KEY + ":" + sessionId);
-        if (context == null) {
-            // 没有会话信息
-            return SecurityContextHolder.createEmptyContext();
-        }else {
-            // 从字符串反序列化为 SecurityContext 对象
-            SecurityContext con = new SecurityContextImpl();
-            Authentication authentication = new UsernamePasswordAuthenticationToken(context, null, null);
-            con.setAuthentication(authentication);
-            return con;
+        // 获取sessionId，确保会话已经创建且响应尚未提交
+        HttpSession session = requestResponseHolder.getRequest().getSession(false);
+        if (session != null) {
+            String sessionId = session.getId();
+            // 看redis里面有没有会话信息
+            String context = (String) redisTemplate.opsForValue().get(SECURITY_CONTEXT_KEY + ":" + sessionId);
+            if (context != null) {
+                // 从字符串反序列化为 SecurityContext 对象
+                SecurityContext con = new SecurityContextImpl();
+                Authentication authentication = new UsernamePasswordAuthenticationToken(context, null, null);
+                con.setAuthentication(authentication);
+                return con;
+            }
         }
+        // 没有会话信息或会话不存在
+        return SecurityContextHolder.createEmptyContext();
     }
 
     @Override
     public void saveContext(SecurityContext context, HttpServletRequest request, HttpServletResponse response) {
-        String sessionId = request.getSession().getId();
-        redisTemplate.opsForValue().set(SECURITY_CONTEXT_KEY + ":" + sessionId, context.getAuthentication().getPrincipal().toString(),30, TimeUnit.MINUTES);
-        SecurityContextHolder.setContext(context);
+        HttpSession session = request.getSession(false);
+        if(session.getId()!=null){
+            String sessionId = session.getId();
+            redisTemplate.opsForValue().set(SECURITY_CONTEXT_KEY + ":" + sessionId, context.getAuthentication().getPrincipal().toString(),30, TimeUnit.MINUTES);
+            SecurityContextHolder.setContext(context);
+        }
     }
 
     @Override
     public boolean containsContext(HttpServletRequest request) {
-        String sessionId = request.getSession().getId();
-        return Boolean.TRUE.equals(redisTemplate.hasKey(SECURITY_CONTEXT_KEY + ":" + sessionId));
+        HttpSession session = request.getSession(false);
+        if(session!=null){
+            return Boolean.TRUE.equals(redisTemplate.hasKey(SECURITY_CONTEXT_KEY + ":" + session.getId()));
+        }
+        return false;
     }
 
     @Override

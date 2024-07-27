@@ -10,4 +10,6 @@ public interface SecurityConstants {
 
     public static final List<String> EXCLUDED_PATHS = Arrays.asList("/login", "/image");
 
+    public final static String authorities="authorities-url";
+
 }
