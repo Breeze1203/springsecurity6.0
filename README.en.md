@@ -15,6 +15,8 @@
 <img src="https://img.shields.io/badge/redis-3.0.3-orange"/>
 </div>
 
+<br>English |[简体中文](https://github.com/Breeze1203/springsecurity6.0/blob/main/README.md)</br>
+
 ## Features
 
 - Feature rewrite authentication function to support multiple authentication methods (for example: database, SMS) (✔️)
