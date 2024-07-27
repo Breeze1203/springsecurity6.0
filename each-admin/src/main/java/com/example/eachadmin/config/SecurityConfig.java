@@ -75,6 +75,8 @@ public class SecurityConfig {
         http.addFilterBefore(imageCodeValidateFilter, UsernamePasswordAuthenticationFilter.class);
         http.addFilterBefore(new CsrfCookieFilter(), BasicAuthenticationFilter.class);
         http.addFilterBefore(new JwtTokenValidatorFilter(),BasicAuthenticationFilter.class);
+        http.addFilterAt(new AuthoritiesLoggingAtFilter(),BasicAuthenticationFilter.class);
+        http.addFilterAfter(new AuthoritiesLoggingAfterFilter(),BasicAuthenticationFilter.class);
         return http.build();
     }
 
