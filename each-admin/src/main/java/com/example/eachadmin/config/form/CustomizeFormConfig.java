@@ -14,13 +14,15 @@ import org.springframework.stereotype.Component;
 @Component
 public class CustomizeFormConfig implements Customizer<FormLoginConfigurer<HttpSecurity>>{
 
+    @Autowired
+    private CustomizeAuthenticationSuccessHandler successHandler;
     @Override
     public void customize(FormLoginConfigurer<HttpSecurity> httpSecurityFormLoginConfigurer) {
         httpSecurityFormLoginConfigurer
                 .loginProcessingUrl("/login")
                 .usernameParameter("username")
                 .passwordParameter("password")
-                .successHandler(new CustomizeAuthenticationSuccessHandler())
+                .successHandler(successHandler)
                 .failureHandler(new CustomizeAuthenticationFailureHandler())
                 .permitAll();
     }

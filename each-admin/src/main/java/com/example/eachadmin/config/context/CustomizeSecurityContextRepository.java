@@ -21,7 +21,7 @@ import java.util.concurrent.TimeUnit;
 @Component
 public class CustomizeSecurityContextRepository implements SecurityContextRepository {
 
-    public static final String SECURITY_CONTEXT_KEY = "spring:security:context";
+    public static final String SECURITY_CONTEXT_KEY = "context";
 
     @Autowired
     private RedisTemplate<String, Object> redisTemplate;
