@@ -22,8 +22,10 @@ import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 
+@Component
 public final class CustomizeAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
-    private static CustomizeAuthenticationSuccessHandler instance;
+    @Autowired
+    private RedisTemplate<String, Object> redisTemplate;
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
@@ -38,6 +40,8 @@ public final class CustomizeAuthenticationSuccessHandler implements Authenticati
         if (csrfToken.getHeaderName() != null) {
             response.setHeader(csrfToken.getHeaderName(), csrfToken.getToken());
         }
+        // 这里可以登录成功后将用户可以访问的资源添加到redis集合里面(基于rbac将用户对应角色可以访问的权限资源)
+        redisTemplate.opsForSet().add("mySet", "/test02");
         // 设置响应的内容类型和字符编码
         response.setContentType("text/html;charset=UTF-8");
         ResponseResult<String> success = ResponseResult.success();
@@ -57,13 +61,5 @@ public final class CustomizeAuthenticationSuccessHandler implements Authenticati
         }
         return authoritiesSet;
     }
-
-
-        public static CustomizeAuthenticationSuccessHandler getInstance() {
-            if (instance == null) {
-                instance = new CustomizeAuthenticationSuccessHandler();
-            }
-            return instance;
-        }
 
 }
