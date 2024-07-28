@@ -11,17 +11,14 @@ import com.example.eachadmin.config.form.CustomizeFormConfig;
 import com.example.eachadmin.config.logout.CustomizeLogoutConfig;
 import com.example.eachadmin.config.remember.CustomizeRememberConfig;
 import com.example.eachadmin.config.session.CustomizeSessionConfig;
+import com.example.eachadmin.exception.CustomizeExceptionHandler;
 import com.example.eachadmin.filter.*;
 import com.google.code.kaptcha.Constants;
 import com.google.code.kaptcha.impl.DefaultKaptcha;
 import com.google.code.kaptcha.util.Config;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.AuthenticationEventPublisher;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.DefaultAuthenticationEventPublisher;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -54,10 +51,13 @@ public class SecurityConfig {
     @Autowired
     private CustomizeFormConfig formConfig;
 
+    @Autowired
+    private CustomizeAuthorizeHttpRequestsConfig requestsConfig;
+
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests(new CustomizeAuthorizeHttpRequestsConfig());
+        http.authorizeHttpRequests(requestsConfig);
         http.authenticationProvider(daoAuthenticationProvider());
         // 配置表单
         http.formLogin(formConfig);
@@ -70,6 +70,7 @@ public class SecurityConfig {
         http.rememberMe(rememberConfig);
         // 跨域配置
         http.cors(new CustomizeCorsConfig());
+        http.exceptionHandling(CustomizeExceptionHandler.getInstance());
         // 配置登出
         http.logout(new CustomizeLogoutConfig());
         http.addFilterBefore(imageCodeValidateFilter, UsernamePasswordAuthenticationFilter.class);
