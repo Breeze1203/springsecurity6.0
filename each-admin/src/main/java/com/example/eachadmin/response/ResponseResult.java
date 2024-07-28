@@ -1,18 +1,21 @@
 package com.example.eachadmin.response;
 
 
+import com.example.eachadmin.config.Authentication.CustomizeAuthenticationFailureHandler;
 import lombok.Builder;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.Date;
 
 @Data
 @Builder
 public class ResponseResult <T> implements Serializable{
+
     /**
      * response timestamp.
      */
-    private long timestamp;
+    private Long timestamp;
 
     /**
      * response code, 200 -> OK.
@@ -28,31 +31,23 @@ public class ResponseResult <T> implements Serializable{
      * response data.
      */
     private T data;
-    public static <T> ResponseResult<T> success() {
+    public static <T extends Serializable> ResponseResult<T> success() {
         return success(null);
     }
 
     /**
      * response success result wrapper.
-     *
-     * @param data response data
-     * @param <T>  type of data class
-     * @return response result
      */
-    public static <T> ResponseResult<T> success(T data) {
+    public static <T extends Serializable> ResponseResult<T> success(T data) {
         return ResponseResult.<T>builder().data(data)
-                .message(ResponseStatus.SUCCESS.getDescription())
-                .status(ResponseStatus.SUCCESS.getResponseCode())
+                .message(ResponseStatus.HTTP_STATUS_200.getDescription())
+                .status(ResponseStatus.HTTP_STATUS_200.getResponseCode())
                 .timestamp(System.currentTimeMillis())
                 .build();
     }
 
     /**
      * response error result wrapper.
-     *
-     * @param message error message
-     * @param <T>     type of data class
-     * @return response result
      */
     public static <T extends Serializable> ResponseResult<T> fail(String message) {
         return fail(null, message);
@@ -60,17 +55,13 @@ public class ResponseResult <T> implements Serializable{
 
     /**
      * response error result wrapper.
-     *
-     * @param data    response data
-     * @param message error message
-     * @param <T>     type of data class
-     * @return response result
      */
-    public static <T> ResponseResult<T> fail(T data, String message) {
+    public static <T extends Serializable> ResponseResult<T> fail(T data, String message) {
         return ResponseResult.<T>builder().data(data)
                 .message(message)
-                .status(ResponseStatus.FAIL.getResponseCode())
+                .status(ResponseStatus.HTTP_STATUS_500.getResponseCode())
                 .timestamp(System.currentTimeMillis())
                 .build();
     }
+
 }

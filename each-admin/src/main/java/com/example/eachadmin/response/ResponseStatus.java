@@ -2,25 +2,16 @@ package com.example.eachadmin.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
 
 @Getter
 @AllArgsConstructor
 public enum ResponseStatus {
-    SUCCESS("200", "success"),
-    FAIL("500", "failed"),
-
-    HTTP_STATUS_200("200", "ok"),
+    HTTP_STATUS_200("200", "success"),
     HTTP_STATUS_400("400", "request error"),
-    HTTP_STATUS_401("401", "no authentication"),
-    HTTP_STATUS_403("403", "no authorities"),
-    HTTP_STATUS_500("500", "server error");
+    HTTP_STATUS_401("401", "尚未登录，请登录"),
+    HTTP_STATUS_403("403", "暂无访问权限"),
+    HTTP_STATUS_500("500", "failed");
 
-    public static final List<ResponseStatus> HTTP_STATUS_ALL = Collections.unmodifiableList(
-            Arrays.asList(HTTP_STATUS_200, HTTP_STATUS_400, HTTP_STATUS_401, HTTP_STATUS_403, HTTP_STATUS_500
-            ));
     /**
      * response code
      */
