@@ -28,7 +28,7 @@
 - Unified interface returns information to ensure compliance with standardized formats (✔️)
 - Implement every step with blog reading (source code reading) (✔️)
 - Support authentication process based on OAuth2 (to be implemented) ❌
-- Implement custom authorization functions, including RBAC-based authority authentication (to be implemented) ❌
+- Implement custom authorization functions, including RBAC-based authority authentication （✔️）
 
 ## Introduction
 
