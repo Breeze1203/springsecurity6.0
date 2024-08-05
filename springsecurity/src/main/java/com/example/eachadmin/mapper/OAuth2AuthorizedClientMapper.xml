@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.eachadmin.mapper.OAuth2AuthorizedClientMapper">
+    <select id="selectAuthorizedClient" resultType="org.springframework.security.oauth2.client.OAuth2AuthorizedClient">
+        SELECT client_registration_id,
+               principal_name,
+               access_token_type,
+               access_token_value,
+               access_token_issued_at,
+               access_token_expires_at,
+               access_token_scopes,
+               refresh_token_value,
+               refresh_token_issued_at
+        FROM oauth2_authorized_client
+        WHERE client_registration_id = #{clientRegistrationId}
+          AND principal_name = #{principalName}
+    </select>
+    <update id="updateAuthorizedClient" parameterType="org.springframework.security.oauth2.client.OAuth2AuthorizedClient">
+        UPDATE oauth2_authorized_client
+        SET access_token_type       = #{access_token_type},
+            access_token_value      = #{access_token_valu},
+            access_token_issued_at  = #{access_token_issued_at},
+            access_token_expires_at = #{access_token_expires_at},
+            access_token_scopes     = #{access_token_scopes},
+            refresh_token_value     = #{refresh_token_value},
+            refresh_token_issued_at = #{refresh_token_issued_at}
+        WHERE client_registration_id = #{client_registration_id}
+          AND principal_name = #{principal_name};
+    </update>
+    <insert id="insertAuthorizedClient" parameterType="org.springframework.security.oauth2.client.OAuth2AuthorizedClient">
+        INSERT INTO oauth2_authorized_client (client_registration_id, principal_name, access_token_type,
+                                              access_token_value, access_token_issued_at, access_token_expires_at,
+                                              access_token_scopes, refresh_token_value, refresh_token_issued_at)
+        VALUES (#{client_registration_id}, #{principal_name}, #{access_token_type}, #{access_token_value},
+                #{access_token_issued_at}, #{access_token_expires_at}, #{access_token_scopes}, #{refresh_token_value},
+                #{refresh_token_issued_at}) ";
+    </insert>
+</mapper>
