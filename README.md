@@ -11,8 +11,9 @@
 <img src="https://img.shields.io/badge/jwt-0.12.3-brightgreen"/>
 <img src="https://img.shields.io/badge/mysql-8.0-green"/>
 <img src="https://img.shields.io/badge/redis-3.0.3-orange"/>
+<img src="https://img.shields.io/badge/OAuth-2-green"/>
+<img src="https://img.shields.io/badge/RBAC-brightgreen"/>
 </div>
-
 <br>[English](https://github.com/Breeze1203/springsecurity6.0/blob/main/README.en.md) | 简体中文</br>
 
 ## 特性
