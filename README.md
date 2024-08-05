@@ -14,7 +14,7 @@
 <img src="https://img.shields.io/badge/OAuth-2-green"/>
 <img src="https://img.shields.io/badge/RBAC-brightgreen"/>
 </div>
-<br>[English](https://github.com/Breeze1203/springsecurity6.0/blob/main/README.en.md) | 简体中文</br>
+<br>[English](https://github.com/Breeze1203/springsecurity6.0/blob/main/README.md) | 简体中文</br>
 
 ## 特性
 
