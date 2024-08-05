@@ -12,9 +12,11 @@
 <img src="https://img.shields.io/badge/mysql-8.0-green"/>
 <img src="https://img.shields.io/badge/redis-3.0.3-orange"/>
 <img src="https://img.shields.io/badge/OAuth-2-green"/>
-<img src="https://img.shields.io/badge/RBAC-brightgreen"/>
+<img src="https://img.shields.io/badge/RBAC-1-brightgreen"/>
 </div>
-[English](https://github.com/Breeze1203/springsecurity6.0/blob/main/README.md)  | 简体中文</br>
+
+
+<br>[English](https://github.com/Breeze1203/springsecurity6.0/blob/main/README.en.md)  | 简体中文</br>
 
 ## 特性
 
@@ -24,7 +26,7 @@
 * 实现自定义会话管理，包括会话过期和失效处理（✔️）
 * 支持基于CSRF令牌的认证，CSRF令牌存储位置自定义（✔️）
 * 支持基于JWT令牌的认证方式（✔️）
-* 实现记住密码功能，令牌存储方式自定义（✔️）
+* 实现记住密码功能，记住我令牌存储方式自定义（✔️）
 * 统一接口返回信息，确保符合标准化的格式（✔️）
 * 搭配博客阅读每一步实现（源码阅读）（✔️）
 
