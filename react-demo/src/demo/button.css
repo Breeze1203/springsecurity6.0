@@ -1,0 +1,36 @@
+.button {
+    /* 按钮基本尺寸 */
+    padding: 10px 20px;
+    font-size: 16px;
+    /* 按钮边框 */
+    border: none;
+    border-radius: 5px; /* 轻微圆角 */
+    /* 按钮颜色和文字颜色 */
+    background-color: #007BFF; /* 蓝色背景 */
+    color: white; /* 白色文字 */
+    /* 字体和鼠标悬停效果 */
+    font-family: 'Arial', sans-serif;
+    cursor: pointer;
+    outline: none; /* 点击时不显示轮廓 */
+    transition: background-color 0.3s ease; /* 平滑过渡效果 */
+}
+
+.button:hover {
+    /* 鼠标悬停时改变背景色 */
+    background-color: #0056b3; /* 较深的蓝色 */
+}
+
+.button:active {
+    /* 按钮按下时的效果 */
+    transform: scale(0.98); /* 轻微缩小 */
+}
+
+.button:focus {
+    /* 按钮聚焦时的边框 */
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.5);
+}
+
+/* In your CSS */
+.avatar {
+    border-radius: 50%;
+}
