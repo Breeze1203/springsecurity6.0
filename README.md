@@ -32,7 +32,7 @@
 
 * 支持基于OAuth2的认证流程（实现github，google）（✔️）
 * 实现自定义授权功能，包括基于RBAC的权限认证（✔️）
-* 自定义OAuth2 Client和OAuth2 Server （ ❌）
+* 自定义OAuth2 Client信息保存数据库 （✔️ ）
 
 ## 简介
 
