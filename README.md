@@ -33,6 +33,7 @@
 * 支持基于OAuth2的认证流程（实现github，google）（✔️）
 * 实现自定义授权功能，包括基于RBAC的权限认证（✔️）
 * 自定义OAuth2 Client信息保存数据库 （✔️ ）
+* 自定义授权服务器oAuth2 登录，前端项目echo admin，后端SpringCloud springsecurity模块（✔️ ）
 
 ## 简介
 
