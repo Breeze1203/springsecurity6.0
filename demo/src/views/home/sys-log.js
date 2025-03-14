@@ -1,73 +1,28 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Card, Timeline, TimelineItem, Button } from 'element-react';
 import 'element-react/dist/theme-chalk/index.css';
-import { useTranslation } from 'react-i18next';
-
-import { pageList } from './api/admin/log'; // 假设你已经创建了相应的 API 调用
 
 const SysLogDashboard = () => {
-    const { t } = useTranslation();
-    const [logState, setLogState] = useState({
-        dataList: [],
-        descs: ['create_time'],
-        pagination: {
-            size: 3,
-        },
-    });
-
-    const [loading, setLoading] = useState(false);
-
-    useEffect(() => {
-        const fetchData = async () => {
-            setLoading(true);
-            try {
-                const data = await pageList();
-                setLogState(prevState => ({ ...prevState, dataList: data }));
-            } catch (error) {
-                console.error('Error fetching log data:', error);
-            } finally {
-                setLoading(false);
-            }
-        };
-        fetchData();
-    }, []);
-
-    const handleRoutr = () => {
-        // Assuming you have a router setup
-        router.push('/admin/log/index');
-    };
-
     return (
         <Card className="box-card" style={{ height: '100%' }}>
-            {({ header }) => (
-                <>
-                    <div className="card-header">
-                        <span>{t('home.systemLogsTip')}</span>
-                        <Button link className="button" onClick={handleRoutr}>
-                            {t('home.moreTip')}
-                        </Button>
-                    </div>
-                </>
-            )}
-            {logState.dataList.length > 0 && (
-                <Timeline>
-                    {logState.dataList.map((item, index) => (
-                        <TimelineItem key={index} timestamp={item.createTime}>
-                            {item.title} - {item.remoteAddr}
-                        </TimelineItem>
-                    ))}
-                </Timeline>
-            )}
+            <div className="card-header">
+                <span>System Logs</span>
+                <Button link className="button" onClick={() => {}}>
+                    More
+                </Button>
+            </div>
+            <Timeline>
+                {/* 假设的数据，实际项目中应替换为从后端获取的数据 */}
+                <TimelineItem timestamp="2023-04-01 12:00:00">
+                    Log Title 1 - 192.168.1.1
+                </TimelineItem>
+                <TimelineItem timestamp="2023-04-01 12:05:00">
+                    Log Title 2 - 192.168.1.2
+                </TimelineItem>
+                {/* 更多的 TimelineItem */}
+            </Timeline>
         </Card>
     );
-};
-
-const styles = {
-    cardHeader: {
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-    },
 };
 
 export default SysLogDashboard;

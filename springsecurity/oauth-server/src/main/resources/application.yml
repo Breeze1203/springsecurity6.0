@@ -1,0 +1,9 @@
+server:
+  port: 9090
+spring:
+  application:
+    name: b-service
+  security:
+    user:
+      name: user
+      password: 123

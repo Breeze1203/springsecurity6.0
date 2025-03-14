@@ -6,6 +6,7 @@ import ShoppingList from "./components/Products";
 import {useState} from "react";
 import {MyButtonTwo} from "./components/ButtonTwo";
 import TaskList from "./components/TaskList";
+import {About} from "./components/About";
 import TaskApp from "./components/TaskApp";
 import Section from "./components/context/Sections";
 import Heading from "./components/context/Heading";
@@ -15,23 +16,26 @@ import Stopwatch from "./components/ref/Stopwatch";
 
 function App() {
     const [count, setCount] = useState(0);
+
     function handleClick() {
         setCount(count + 2);
     }
 
     return (
         <div>
-            <h1 onClick={handleClick}>Welcome to my app {count}</h1>
-            {/*<MyButton/>*/}
-            {/*<MyButtonTwo count={count} onClick={handleClick}/>*/}
-            {/*<Profile/>*/}
-            {/*<Condition/>*/}
-            {/*<ShoppingList/>*/}
-            <TaskApp/>
+            <MyButton/>
+            <MyButtonTwo count={count} onClick={handleClick}/>
+            <App/>
+            <Condition/>
+            <ShoppingList/>
+            <TaskList/>
             <ImageTwo/>
             <Stopwatch/>
-            {/*<ImageOne/>*/}
-            {/*<AllPosts/>*/}
+            <ImageOne/>
+            <AllPosts/>
+            <Profile/>
+            <About/>
+            <TaskApp/>
         </div>
     );
 
@@ -40,18 +44,18 @@ function App() {
 function AllPosts() {
     return (
         <Section>
-            <RecentPosts />
+            <RecentPosts title={'里斯本的味道'} body={"...那些蛋挞！"}/>
         </Section>
     );
 }
 
-function RecentPosts() {
+function RecentPosts({title, body}) {
     return (
         <Section>
             <Heading>最近的帖子</Heading>
             <Post
-                title="里斯本的味道"
-                body="...那些蛋挞！"
+                title={title}
+                body={body}
             />
             <Post
                 title="探戈节奏中的布宜诺斯艾利斯"
@@ -61,7 +65,7 @@ function RecentPosts() {
     );
 }
 
-function Post({ title, body }) {
+function Post({title, body}) {
     return (
         <Section isFancy={true}>
             <Heading>
