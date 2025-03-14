@@ -35,6 +35,7 @@
 * Support authentication process based on OAuth2 (implement github, google) (✔️)
 * Implement custom authorization functions, including RBAC-based permission authentication (✔️)
 * Customize OAuth2 Client information storage database (✔️)
+* Customized authorization server oAuth2 login, front-end project echo admin, back-end SpringCloud springsecurity module (✔️)
 ## Introduction
 
 Learn the latest implementation of SpringSecurity (separation of front-end and back-end) according to the official website, including authentication, authorization, and custom configuration of various components (read with the blog article)
