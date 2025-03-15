@@ -1,7 +1,3 @@
----
-typora-root-url: ./
----
-
 <div align=center>
  <h2>
    SpringSecurity官网最新学习文档
