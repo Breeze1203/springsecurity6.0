@@ -210,7 +210,7 @@ const LoginPage = () => {
     };
 
     const handleOAuthLogin = async () => {
-        window.location.href = 'http://localhost:5555/oauth2/authorize/b';
+        window.location.href = 'http://localhost:5555/oauth2/authorize/echo';
     };
 
     // 公共表单底部组件
