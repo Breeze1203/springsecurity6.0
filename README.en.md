@@ -47,3 +47,7 @@ Learn the latest implementation of SpringSecurity (separation of front-end and b
 ## Instructions for use
 
 PRs and Issues are welcome. Ideally, I will handle and respond as soon as possible. Thank you for your attention.
+
+![](./photo/截屏2025-03-14 17.49.01.png)
+
+![](./photo/截屏2025-03-15 16.55.28.png)

@@ -1,3 +1,7 @@
+---
+typora-root-url: ./
+---
+
 <div align=center>
  <h2>
    SpringSecurity官网最新学习文档
@@ -47,6 +51,6 @@
 
 欢迎 PR 和 Issue，理想情况下，我都会尽快处理和回复，感谢你关注
 
-![截屏2025-03-14 17.49.01](echo/src/assets/截屏2025-03-14 17.49.01.png)
+![](./photo/截屏2025-03-14 17.49.01.png)
 
-![](echo/src/assets/截屏2025-03-15 16.55.28.png)
+![](./photo/截屏2025-03-15 16.55.28.png)
