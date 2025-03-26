@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-const CallbackPage = () => {
+const Callback = () => {
     const location = useLocation();
     const navigate = useNavigate();
 
@@ -14,11 +14,9 @@ const CallbackPage = () => {
                 // 解码并解析 JSON
                 const jsonResponse = decodeURIComponent(encodedJson);
                 const data = JSON.parse(jsonResponse);
-
                 // 根据响应处理逻辑
                 if (data.code === 200) {
                     console.log('登录成功:', data.data.username);
-
                     localStorage.setItem('username', data.data.username); // 存储用户信息
                     navigate('/home'); // 假设有主页，跳转
                 } else if (data.code === 500) {
@@ -27,7 +25,7 @@ const CallbackPage = () => {
                     navigate('/login'); // 返回登录页
                 } else {
                     console.error('未知状态:', data.message);
-                    navigate('/login');
+                    navigate('/each-admin/login');
                 }
             } catch (error) {
                 console.error('解析 JSON 失败:', error);
@@ -43,4 +41,4 @@ const CallbackPage = () => {
     return <div>处理登录回调中...</div>;
 };
 
-export default CallbackPage;
+export default Callback;

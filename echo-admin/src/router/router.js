@@ -1,8 +1,8 @@
-import LoginPage from "../component/auth/LoginPage";
-import ForgotPage from "../component/auth/ForgotPage";
+import Login from "../component/auth/login";
+import Forget from "../component/auth/forget";
 import { Navigate } from 'react-router-dom';
-import CallbackPage from "../component/auth/CallbackPage";
-import Home from "../component/Home";
+import Callback from "../component/auth/callback";
+import Home from "../component/desbord/home";
 
 const routes = [
     {
@@ -11,18 +11,18 @@ const routes = [
         auth:false
     },
     {
-        path: '/login', // LoginPage 的新路径
-        element: <LoginPage />,
+        path: '/login', // Login 的新路径
+        element: <Login />,
         auth:false
     },
     {
         path: '/forgot',
-        element: <ForgotPage />,
+        element: <Forget />,
         auth:false
     },
     {
         path: '/callback',
-        element: <CallbackPage />,
+        element: <Callback />,
         auth:false
     },
     {

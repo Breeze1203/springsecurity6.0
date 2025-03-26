@@ -7,8 +7,8 @@ const isAuthenticated = () => {
     return localStorage.getItem("username") !== null;
 };
 
-const PrivateRoute = ({ children }) => {
+const Private = ({ children }) => {
     // 如果已登录，渲染子组件；未登录，跳转到 login
     return isAuthenticated() ? children : <Navigate to="/login" replace />;
 };
-export default PrivateRoute;
+export default Private;
